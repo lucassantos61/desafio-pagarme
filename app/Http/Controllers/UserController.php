@@ -21,7 +21,6 @@ class UserController extends Controller
         $user = $request->all();
 		$user['password'] = Hash::make($user['password']);
         User::create($user);
-        
         return redirect()->route('produto.index');
     }
 
@@ -43,5 +42,11 @@ class UserController extends Controller
     public function getProfile()
     {
         return view('user.profile');
+    }
+
+    public function getLogout()
+    {
+        Auth::logout();
+        return redirect()->route('produto.index');
     }
 }
