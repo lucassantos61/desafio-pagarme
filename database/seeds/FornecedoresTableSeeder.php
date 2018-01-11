@@ -14,13 +14,16 @@ class FornecedoresTableSeeder extends Seeder
         public function run()
         {
             $fornecedor = new Fornecedor(['nome'=>'Maria Barros',
-                                            'lucro'=>0.0]);
+                                            'lucro'=>0.0,
+                                            'revendedor'=>false]);
             $fornecedor->save();
             $fornecedor = new Fornecedor(['nome'=>'João Thiago Samuel Cavalcanti',
-                                            'lucro'=>0.0]);
+                                            'lucro'=>0.0,
+                                            'revendedor'=>true]);
             $fornecedor->save();
             $fornecedor = new Fornecedor(['nome'=>'César Anthony João Martins',
-                                            'lucro'=>0.0]);
+                                            'lucro'=>0.0,
+                                            'revendedor'=>true]);
             $fornecedor->save();
         }
 }

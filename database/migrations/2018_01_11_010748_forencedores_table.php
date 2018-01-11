@@ -18,6 +18,7 @@ class ForencedoresTable extends Migration
             $table->timestamps();
             $table->string('nome');
             $table->float('lucro');
+            $table->boolean('revendedor');
         });
     }
  
