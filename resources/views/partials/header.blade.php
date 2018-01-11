@@ -22,7 +22,7 @@ Cart</a></li>
               Usuários <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="{{route('user.signup')}}">Cadastrar</a></li>
-            <li><a href="#">Login</a></li>
+            <li><a href="{{ route('user.signin')}}">Login</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Logout</a></li>
           </ul>
