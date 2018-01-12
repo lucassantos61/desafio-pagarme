@@ -6,8 +6,8 @@ namespace fantasias\Http\Controllers;
 use fantasias\Produto;
 use fantasias\Fornecedor;
 use fantasias\Cart;
+
 use Illuminate\Http\Request;
-use fantasias\Product;
 use Session;
 
 
@@ -16,7 +16,7 @@ class ProdutoController extends Controller
     public function getIndex()
     {  
         $produtos = Produto::All();
-        return view('shop.index')->withProdutos($produtos);;
+        return view('shop.index')->withProdutos($produtos);
     }
 
     public function getAddToCart(Request $request ,$id)
@@ -41,6 +41,21 @@ class ProdutoController extends Controller
 
         return view('shop.shopping-cart',['produtos' => $cart->items,
                                           'total'=>$cart->total,
+                                          'frete'=>$cart->frete]);
+   
+                                        }
+
+    public function checkout()
+    {
+        $produtos = Produto::All();
+        $sacola = array();
+        foreach($produtos as $produto){
+            $cart = new Cart($oldCart);
+            $cart->add($produto, $produto->id);    
+            $sacola[] = $cart->items;
+        }
+        return view('shop.checkout-pagarme',['sacola' => $sacola,
+                                          'total'=>$cart->getFullPrice($sacola)+$cart->frete,
                                           'frete'=>$cart->frete]);
     }
 }

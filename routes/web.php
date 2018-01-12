@@ -15,6 +15,10 @@ Route::get('/', [
     'uses' => 'ProdutoController@getIndex',
     'as' => 'produto.index'
 ]);
+
+Route::get('/checkout','ProdutoController@Checkout');
+
+
 Route::get('/addCart/{id}',[
     'uses' =>'ProdutoController@getAddToCart',
     'as' => 'produto.addToCart'
