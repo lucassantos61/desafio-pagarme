@@ -14,6 +14,7 @@
                     <li class="list-group-item">
                         <span class="badge">{{$produto['qtd']}}</span>
                         <strong>{{$produto['item']['title']}}</strong>
+                        <strong>Feito:{{$produto['item']->fornecedor->nome}}</strong>
                         <span class="label label-success">{{$produto['preco']}}</span>
                         <div class="btn-group">
                         <button type="button" class="btn btn-xs btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

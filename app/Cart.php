@@ -4,19 +4,39 @@ namespace fantasias;
 
 class Cart
 {
-    public $items;
-    public $qtd;
-    public $total;
-    public $frete = 42.00;
+    private $items;
+    private $qtdProd;
+    private $total;
+    private $frete = 42.00;
 
-    public function __constrcut($oldCart)
+    public function __construct($oldCart)
     {
+ 
         if($oldCart)
         {
             $this->items = $oldCart->items;
-            $this->qtd = $oldCart->qtd;
-            $this->total = $oldCart->frete;
+            $this->qtdProd = $oldCart->qtdProd;
+            $this->total = $oldCart->total;
         }
+    }
+    public function getFrete()
+    {
+        return $this->frete;
+    }
+
+    public function getQtd()
+    {
+        return $this->qtdProd;
+    }
+
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    public function getTotal()
+    {
+        return $this->total;
     }
 
     public function add($item,$id)
@@ -32,7 +52,7 @@ class Cart
         $storeOrderItem['qtd']++;
         $storeOrderItem['preco'] = $item->preco * $storeOrderItem['qtd'];
         $this->items['$id'] = $storeOrderItem;
-        $this->qtd++;
+        $this->qtdProd++;
         $this->total += $item->preco; 
     }
 

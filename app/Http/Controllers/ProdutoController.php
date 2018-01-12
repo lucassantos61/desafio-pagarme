@@ -22,10 +22,10 @@ class ProdutoController extends Controller
     public function getAddToCart(Request $request ,$id)
     {
         $produto = Produto::find($id);
-        $oldCart = Session::has('cart') ? Session::get('cart') : null ;
-
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->add($produto, $produto->id);
+        
         $request->session()->put('cart',$cart);
         return redirect()->route('produto.index');
     }
@@ -37,13 +37,13 @@ class ProdutoController extends Controller
             return view('shop.shopping-cart');
         }
         $oldCart = Session::get('cart');
+       
         $cart = new Cart($oldCart);
-
-        return view('shop.shopping-cart',['produtos' => $cart->items,
-                                          'total'=>$cart->total,
-                                          'frete'=>$cart->frete]);
+        return view('shop.shopping-cart',['produtos' => $cart->getItems(),
+                                          'total'=>$cart->getTotal()+$cart->getFrete(),
+                                          'frete'=>$cart->getFrete()]);
    
-                                        }
+    }
 
     public function checkout()
     {
@@ -54,8 +54,8 @@ class ProdutoController extends Controller
             $cart->add($produto, $produto->id);    
             $sacola[] = $cart->items;
         }
-        return view('shop.checkout-pagarme',['sacola' => $sacola,
-                                          'total'=>$cart->getFullPrice($sacola)+$cart->frete,
-                                          'frete'=>$cart->frete]);
+        return view('shop.shopping-cart',['produtos' => $cart->getItems(),
+                                        'total'=>$cart->getTotal()+$cart->getFrete(),
+                                        'frete'=>$cart->getFrete()]);
     }
 }

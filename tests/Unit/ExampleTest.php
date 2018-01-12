@@ -3,6 +3,8 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
+use fantasias\User;
+
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ExampleTest extends TestCase
@@ -14,6 +16,13 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $this->assertTrue(true);
+        $this->be(factory(User::class)->create());
+        $data = [
+            'name' => 'My name',
+            'location' => 'Third Street Promenade',
+        ];
+        $response = $this->post('/user', $data);
+        $response->assertSessionHasErrors(['email']);
+     
     }
 }
