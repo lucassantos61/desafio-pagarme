@@ -19,7 +19,7 @@ class CreateUserTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('rremember_token');
+            $table->rememberToken();
         });
     }
 

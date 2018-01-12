@@ -16,7 +16,7 @@
         <div  class="clearfix">
             <div class="pull-left price">R$ {{$produto->preco}}</div>
             <!-- <div class="pull-right">Feito por:{{$produto->fornecedor->nome}}</div> -->
-            <a href="#" class="btn btn-success pull-right" role="button">Add To Cart</a>
+            <a href="{{route('produto.addToCart',['id' => $produto->id])}}" class="btn btn-success pull-right" role="button">Add To Cart</a>
         </div>
       </div>
     </div>
