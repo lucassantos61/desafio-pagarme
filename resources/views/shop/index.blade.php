@@ -15,7 +15,7 @@
         <p class = "description">{{$produto->descricao}}</p>
         <div  class="clearfix">
             <div class="pull-left price">R$ {{$produto->preco}}</div>
-            <!-- <div class="pull-right">Feito por:{{$produto->fornecedor->nome}}</div> -->
+            <div class="pull-right">Feito por:{{$produto->fornecedor->nome}}</div>
             <a href="{{route('produto.addToCart',['id' => $produto->id])}}" class="btn btn-success pull-right" role="button">Add To Cart</a>
         </div>
       </div>

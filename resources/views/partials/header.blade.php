@@ -17,7 +17,7 @@
           <a href="{{route('produto.shoppingCart')}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
             Cart
             <span class="badge">
-              {{Session::has('cart')? Session::get('cart')->qtd :''}}
+              {{Session::has('cart')? Session::get('cart')->getQtd() :''}}
             </span>
           </a>
         </li>
