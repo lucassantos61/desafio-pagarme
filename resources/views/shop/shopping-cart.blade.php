@@ -15,7 +15,9 @@
                         <span class="badge">{{$produto['qtd']}}</span>
                         <strong>{{$produto['item']['title']}}</strong>
                         <span class="label label-success">R${{$produto['preco']}}</span>
-
+                        <div class="btn-group">
+                            <a class="item"  class="btn btn-xs btn-default dropdown-toggle" href="{{route('produto.removeById', ['id' =>$produto['item']['id']])}}">Remover</a>
+                        </div>
                     </li>
                 @endforeach
                 </ul>

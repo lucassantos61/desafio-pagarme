@@ -20,7 +20,7 @@ class ProdutoController extends Controller
     public function getIndex()
     {
         $produtos = Produto::All();
-        return view('shop.index')->withProdutos($produtos);;
+        return view('shop.index')->withProdutos($produtos);
     }
 
     public function getAddToCart(Request $request, $id)
@@ -33,7 +33,24 @@ class ProdutoController extends Controller
         $request->session()->put('cart', $cart);
         return redirect()->route('checkout');
     }
+    public function removeById($id)
+    {
+        $produto = Produto::find($id);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
 
+        $cart = new Cart($oldCart);
+        $cart->removeOne($id);
+        if($cart->getQtd() > 0)
+        {
+            Session::put('cart',$cart);
+            return redirect()->route(   'produto.index');
+
+        }
+
+        Session::forget('cart');
+        return redirect()->route(   'produto.index');
+
+    }
     public function getCart()
     {
         if (!Session::has('cart')) {

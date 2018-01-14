@@ -63,4 +63,19 @@ class Cart
         $this->total += ($item->preco);
     }
 
+    public function removeOne($id)
+    {
+        if($this->items[$id]['qtd'] <= 0)
+        {
+            unset($this->items['id']);
+            return;
+        }
+        $this->items[$id]['qtd']-- ;
+        $this->items[$id]['preco'] -= $this->items[$id]['item']['preco'];
+        $this->qtd--;
+        $this->total -= $this->items[$id]['item']['preco'];
+
+
+    }
+
 }
