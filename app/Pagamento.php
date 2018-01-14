@@ -7,23 +7,23 @@ use PagarMe\Sdk\PagarMeException;
 
 class Pagamento
 {
-    CONST API_KEY = 'ek_test_Rf8Btaps2dLMYFXope3rwFJGliFHdy';
+   private $api_key = 'ek_test_Rf8Btaps2dLMYFXope3rwFJGliFHdy';
 
-    public function makeTransaction($customerInfo,$cardHash,$id,$total)
+    public function makeTransaction($customerInfo,$total)
     {
-        $pagarMe = new \PagarMe\Sdk\PagarMe(API_KEY);
+        $pagarMe = new \PagarMe\Sdk\PagarMe($this->api_key);
 
         $amount = $total;
         $installments = 1;
         $capture = true;
         $postbackUrl = 'http://requestb.in/pkt7pgpk';
-        $metadata = ['idProduto' => $id];
+        $metadata = ['idProduto' => 1];
 
 
         try
         {
-            $customer = $this->createCustomer($pagarMe,$customerInfo);
-            $card = $this->createCard($pagarMe,$cardHash);
+            $customer = $this->createCustomer($customerInfo);
+            $card = $this->createCard($pagarMe);
             $transaction = $pagarMe->transaction()->creditCardTransaction(
                 $amount,
                 $card,
@@ -37,10 +37,10 @@ class Pagamento
         {
             return $p->getMessage();
         }
-
+        return $transaction ? true : false;
     }
 
-    private function createCustomer(\PagarMe\Sdk\PagarMe $pagarMe, $customerInfo)
+    private function createCustomer($customerInfo)
     {
         $customer = new \PagarMe\Sdk\Customer\Customer(
             [
@@ -52,7 +52,6 @@ class Pagamento
                     'street_number' => $customerInfo['numero'],
                     'neighborhood'  => $customerInfo['bairro'],
                     'zipcode'       => $customerInfo['cep'],
-                    'complementary' => $customerInfo['complement'],
                     'city'          => $customerInfo['cidade'],
                     'state'         => 'Sao Paulo',
                     'country'       => 'Brasil'
@@ -60,9 +59,7 @@ class Pagamento
                 'phone' => [
                     'ddd'    => $customerInfo['ddd'],
                     'number' =>$customerInfo['fone']
-                ],
-                'born_at' => $customerInfo['data_nasc'],
-                'sex' => $customerInfo['sexo']
+                ]
             ]
         );
         return $customer;

@@ -15,16 +15,7 @@
                         <span class="badge">{{$produto['qtd']}}</span>
                         <strong>{{$produto['item']['title']}}</strong>
                         <span class="label label-success">R${{$produto['preco']}}</span>
-                        <div class="btn-group">
-                        <button type="button" class="btn btn-xs btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           Remover
-                           <span class="caret"></span>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Remover 1</a>
-                            <a class="dropdown-item" href="#">Remover todos</a>
-                        </div>
-                        </div>
+
                     </li>
                 @endforeach
                 </ul>

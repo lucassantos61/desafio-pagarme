@@ -15,6 +15,7 @@ Route::get('/', [
     'uses' => 'ProdutoController@getIndex',
     'as' => 'produto.index'
 ]);
+
 Route::get('/addCart/{id}',[
     'uses' =>'ProdutoController@getAddToCart',
     'as' => 'produto.addToCart'
@@ -30,7 +31,7 @@ Route::get('/checkout',[
 ]);
 
 Route::post('/checkout',[
-    'uses' => 'ProdutoController@postCheckout',
+    'uses' => 'ProdutoController@finishVenda',
     'as' => 'checkout'
 ]);
 Route::group(['prefix' => 'user'],function(){

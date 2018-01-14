@@ -10,5 +10,9 @@ class Fornecedor extends Model
 
     public function produtos(){
         return $this->hasMany('fantasias\Produto');
-     }
+    }
+
+    public function vendas(){
+        return $this->hasMany('fantasias\venda');
+    }
 }

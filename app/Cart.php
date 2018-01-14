@@ -35,6 +35,20 @@ class Cart
     {
         return $this->frete;
     }
+    public function getFornecedor($items)
+    {
+
+        foreach ($items as $item)
+        {
+            foreach ($item as $produto)
+            {
+                if(!is_null($produto['fornecedor_id']))
+                $fornecedorId = $produto['fornecedor_id'];
+            }
+
+        }
+        return $fornecedorId;
+    }
     public function add($item, $id)
     {
         $storeItem = ['qtd' => 0,'preco'=>$item->preco, 'item'=> $item];
