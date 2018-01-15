@@ -14,7 +14,7 @@
         <li>Faça o clone deste projeto</li>
         <li>Navegue até a pasta do projeto e rode o seguinte comando composer install --no-scripts</li>
         <li>Em seguida copie no arquivo .env coloque o usuário e senha de seu banco de dado MySql</li>
-        <li>Crie uma tabela com o nome de marketplace</li>
+        <li>Crie uma tabela com o nome de marketplace create database marketplace;</li>
         <li>Crie uma no key para o laravel php artisan key:generate</li>
         <li>Em seguida faça as migrations php artisan migrate --seed</li>
     </ul>
@@ -31,4 +31,5 @@
 <h2>Rodando os testes</h2>
     <ul>
         <li>vendor/bin/phpunit</li>
+        <li>Foram escritos testes para Validar as Rotas criadas epara validar as informações no banco</li>
     </ul>

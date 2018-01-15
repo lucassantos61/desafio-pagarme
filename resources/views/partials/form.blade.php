@@ -7,7 +7,7 @@
         <input type="text" name="nome" id="full-name" class="form-control" placeholder="Nome Completo ou Razão Social" required>
     </div>
     <div class="form-group">
-        <input type="text" name="document_number" id="document-number" class="form-control" placeholder="CPF ou CNPJ" pattern="[0-9]{1,14}" required>
+        <input type="text" name="document_number" id="document-number" class="form-control" placeholder="CPF ou CNPJ" pattern="[0-9]{1,14}" maxlength="11" size="11" required>
     </div>
     <div class="form-group">
         <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
@@ -31,10 +31,10 @@
         <input type="text" name="estado" id="address-state" class="form-control" placeholder="Estado" size="8">
     </div>
     <div class="form-group">
-        <input type="text" name="ddd" id="phone-ddd" class="form-control" placeholder="DDD">
+        <input type="text" name="ddd" id="phone-ddd" class="form-control" maxlength="2" size="2" placeholder="DDD">
     </div>
     <div class="form-group">
-        <input type="text" name="fone" id="phone-number" class="form-control" placeholder="Telefone">
+        <input type="text" name="fone" id="phone-number" class="form-control" maxlength="9" placeholder="Telefone">
     </div>
     <!-- Customer Data -->
 
