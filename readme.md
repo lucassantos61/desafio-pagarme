@@ -17,6 +17,7 @@
         <li>Crie uma tabela com o nome de marketplace create database marketplace;</li>
         <li>Crie uma no key para o laravel php artisan key:generate</li>
         <li>Em seguida faça as migrations php artisan migrate --seed</li>
+        <li>Suba o servidor com php artisan serve</li>
     </ul>
 
 <h2>Rotas</h2>
